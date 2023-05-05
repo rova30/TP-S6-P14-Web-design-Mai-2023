@@ -1,3 +1,7 @@
+<?php
+    use Carbon\Carbon;
+    Carbon::setLocale('fr');
+?>
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
@@ -70,53 +74,25 @@
     <!-- <section> begin ============================-->
     <section class="bg-dark pt-6">
 
-        <div class="container"  style="margin-top:50px">
+        <div class="container"  style="margin-top:110px">
             <div class="col-md-6">
                 <h1 class="text-white fs-lg-5 fs-md-3 fs-2">Bienvenue, vous trouverez ici les derniers infos sur l'IA.</h1>
             </div>
             <div class="swiper mt-7">
-                <div class="swiper-container swiper-theme" data-swiper='{"slidesPerView":1,"breakpoints":{"640":{"slidesPerView":1,"spaceBetween":10},"768":{"slidesPerView":2,"spaceBetween":20},"1025":{"slidesPerView":3,"spaceBetween":40}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"},"loop":true,"freeMode":true,"loopedSlides":3}'>
+                <div class="swiper-container swiper-theme" data-swiper='{"slidesPerView":1,"breakpoints":{"640":{"slidesPerView":1,"spaceBetween":10},"768":{"slidesPerView":2,"spaceBetween":20},"1025":{"slidesPerView":3,"spaceBetween":40}},"spaceBetween":10,"grabCursor":true,"pagination":{"el":".swiper-pagination","clickable":true},"navigation":{"nextEl":".swiper-button-next","prevEl":".swiper-button-prev"},"loop":false,"freeMode":true,"loopedSlides":3}'>
                     <div class="swiper-wrapper">
+                        @foreach($articles as $article)
                         <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
                             <div class="d-flex flex-column justify-content-between h-100">
-                                <h4 class="text-black">“Buyer buzz partner network disruptive non-disclosure agreement business”</h4>
+                                <h4 class="text-black">{{$article->titre}}</h4>
                                 <div class="d-flex align-items-center gap-3 mt-5"><img src="<?php echo asset('assets/front-office/img/review/1.png')?>" alt="" />
                                     <div class="text-black">
-                                        <p class="mb-0 fw-bold text-dark">Albus Dumbledore</p><small>Manager @ Howarts</small>
+                                        <p class="mb-0 fw-bold text-dark">{{$article->getRedacteurUserAttribute()->first()->nom}}&nbsp;{{$article->getRedacteurUserAttribute()->first()->prenom}}</p><small>{{Carbon::parse($article->dateheurepublication)->isoFormat('dddd DD MMMM YYYY, HH:mm')}}</small>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                            <div class="d-flex flex-column justify-content-between h-100">
-                                <h4 class="text-black">“Learning curve infrastructure value proposition advisor strategy user experience hypotheses investor.”</h4>
-                                <div class="d-flex align-items-center gap-3 mt-5"><img src="<?php echo asset('assets/front-office/img/review/2.png')?>" alt="" />
-                                    <div class="text-black">
-                                        <p class="mb-0 fw-bold text-dark">Severus Snape</p><small>Manager @ Slytherin</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                            <div class="d-flex flex-column justify-content-between h-100">
-                                <h4 class="text-black">“Release facebook responsive web design business model canvas seed money monetization.”</h4>
-                                <div class="d-flex align-items-center gap-3 mt-5"><img src="<?php echo asset('assets/front-office/img/review/3.png')?>" alt="" />
-                                    <div class="text-black">
-                                        <p class="mb-0 fw-bold text-dark">Harry Potter</p><small>Team Leader @ Gryffindor</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
-                            <div class="d-flex flex-column justify-content-between h-100">
-                                <h4 class="text-black">“Buyer buzz partner network disruptive non-disclosure agreement business”</h4>
-                                <div class="d-flex align-items-center gap-3 mt-5"><img src="<?php echo asset('assets/front-office/img/review/1.png')?>" alt="" />
-                                    <div class="text-black">
-                                        <p class="mb-0 fw-bold text-dark">Albus Dumbledore</p><small>Manager @ Howarts</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="swiper-button-next"><span class="fas fa-arrow-right fs-lg-3 fs-2"></span></div>

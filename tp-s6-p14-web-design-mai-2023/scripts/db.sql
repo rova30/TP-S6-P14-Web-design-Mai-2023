@@ -18,12 +18,12 @@ CREATE TABLE Articles(
     id serial PRIMARY KEY NOT NULL,
     redacteur_id int REFERENCES Utilisateurs(id) NOT NULL,
     titre varchar(255) NOT NULL,
-    resume varchar(255) NOT NULL,
+    resume text NOT NULL,
     contenu text NOT NULL,
     dateHeureCreation timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    validePar int REFERENCES Utilisateurs(id) NOT NULL,
+    validePar int REFERENCES Utilisateurs(id),
     dateHeureValidation timestamp,
-    publiePar int REFERENCES Utilisateurs(id) NOT NULL,
+    publiePar int REFERENCES Utilisateurs(id),
     dateHeurePublication timestamp,
     status int DEFAULT 0
 );
@@ -44,6 +44,6 @@ INSERT INTO Profils(nom) VALUES
 
 
 INSERT INTO Utilisateurs(profil_id, nom, prenom, email, mdp) VALUES
-(1, 'Rakotoarisoa', 'Pierrette', 'rakotoarisoa@gmail.com',sha256('rakotoarisoa1234')),
-(2, 'Rabemananjara', 'Jean-Jacques', 'rabemananjara@gmail.com', sha256('rabemananjara1234')),
-(3, 'Andrianivoson', 'Michel', 'andrianivoson@gmail.com', sha256('andrianivoson1234'));
+(1, 'Rakotoarisoa', 'Pierrette', 'rakotoarisoa@gmail.com', 'rakotoarisoa1234'),
+(2, 'Rabemananjara', 'Jean-Jacques', 'rabemananjara@gmail.com', 'rabemananjara1234'),
+(3, 'Andrianivoson', 'Michel', 'andrianivoson@gmail.com', 'andrianivoson1234');

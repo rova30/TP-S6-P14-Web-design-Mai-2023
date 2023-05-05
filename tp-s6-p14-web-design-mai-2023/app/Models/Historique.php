@@ -10,7 +10,7 @@ class Historique extends Model
     use HasFactory;
 
 
-    protected $table = 'articles';
+    protected $table = 'historiques';
 
     protected $fillable = [
         'id',
@@ -20,5 +20,8 @@ class Historique extends Model
         'contenu',
         'typemodification'
     ];
+
+    public $timestamps = false;
+
 
 }

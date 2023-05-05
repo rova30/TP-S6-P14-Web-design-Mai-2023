@@ -20,4 +20,10 @@ class Utilisateur extends Model
         'mdp'
     ];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+
 }

@@ -17,11 +17,29 @@ class Article extends Model
         'titre',
         'resume',
         'contenu',
-        'dateheurecraeation',
+        'dateheurecreation',
         'validepar',
         'dateheurevalidation',
         'publiepar',
         'dateheurepublication',
         'status'
     ];
+
+    public $timestamps = false;
+
+    public function getRedacteurUserAttribute()
+    {
+        return $this->redacteur_id ? Utilisateur::findOrFail($this->redacteur_id) : null;
+    }
+
+    public function getValideparUserAttribute()
+    {
+        return $this->validepar ? Utilisateur::findOrFail($this->validepar) : null;
+    }
+
+    public function getPublieparUserAttribute()
+    {
+        return $this->publiepar ? Utilisateur::findOrFail($this->publiepar) : null;
+    }
+
 }
