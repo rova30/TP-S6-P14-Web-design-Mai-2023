@@ -81,9 +81,9 @@
                                         <span class="ml-2">{{session()->get('redacteur')[0]->prenom}}</span>
                                     @endif
                                 </a>
-                                <a href="" class="dropdown-item">
+                                <a href="{{url('/logoutRedacteur')}}" class="dropdown-item">
                                     <i class="icon-key"></i>
-                                    <span class="ml-2">Logout </span>
+                                    <span class="ml-2">Se déconnecter</span>
                                 </a>
                             </div>
                         </li>

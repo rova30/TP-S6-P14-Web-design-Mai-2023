@@ -77,13 +77,13 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="" class="dropdown-item">
                                     <i class="icon-user"></i>
-                                    @if (session()->get('redacteur')!=null)
+                                    @if (session()->get('redacteurchef')!=null)
                                         <span class="ml-2">{{session()->get('redacteurchef')[0]->prenom}}</span>
                                     @endif
                                 </a>
-                                <a href="" class="dropdown-item">
+                                <a href="{{url('/logoutRedacteurChef')}}" class="dropdown-item">
                                     <i class="icon-key"></i>
-                                    <span class="ml-2">Logout </span>
+                                    <span class="ml-2">Se déconnecter</span>
                                 </a>
                             </div>
                         </li>
@@ -126,7 +126,13 @@
         <!-- row -->
         <div class="container-fluid">
             <div class="row">
-                @foreach($articles as $article)
+                @if (session()->has('error'))
+                    <div class="alert alert-danger"><strong>Erreur!</strong> {{ session()->get('error') }}</div>
+                @endif
+                @if (session()->has('success'))
+                    <div class="alert alert-success"><strong>Succés!</strong> {{ session()->get('success') }}</div>
+                @endif
+            @foreach($articles as $article)
                 <div class="col-xl-4 col-xxl-6 col-lg-6 col-sm-6">
                     <a href="{{url('redacteur-chef/article')}}/{{Str::slug($article->titre)}}-{{$article->id}}">
                     <div class="card">

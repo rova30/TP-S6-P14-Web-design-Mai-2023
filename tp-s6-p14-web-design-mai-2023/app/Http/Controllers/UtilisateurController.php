@@ -32,4 +32,20 @@ class UtilisateurController extends Controller
         return redirect()->back()->with('error', 'Email ou Mot de passe incorrect(e)');
     }
 
+    public function logoutRedacteur(){
+        session()->forget('redacteur');
+        return redirect()->route('login');
+    }
+
+    public function logoutRedacteurChef(){
+        session()->forget('redacteurchef');
+        return redirect()->route('login');
+    }
+
+    public function logoutAdmin(){
+        session()->forget('admin');
+        return redirect()->route('login');
+    }
+
+
 }

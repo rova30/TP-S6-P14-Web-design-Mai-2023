@@ -13,4 +13,9 @@ class FrontOfficeController extends Controller
                             ->get();
         return view('index', compact('articles'));
     }
+
+    public function getArticle($url){
+        $article = (new ArticleController())->getArticleById($url);
+        return view('articleViewFrontOffice', compact('article'));
+    }
 }

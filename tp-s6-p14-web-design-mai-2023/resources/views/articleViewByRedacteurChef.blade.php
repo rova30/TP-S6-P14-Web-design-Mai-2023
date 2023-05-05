@@ -77,13 +77,13 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="" class="dropdown-item">
                                     <i class="icon-user"></i>
-                                    @if (session()->get('redacteur')!=null)
+                                    @if (session()->get('redacteurchef')!=null)
                                         <span class="ml-2">{{session()->get('redacteurchef')[0]->prenom}}</span>
                                     @endif
                                 </a>
-                                <a href="" class="dropdown-item">
+                                <a href="{{url('/logoutRedacteurChef')}}" class="dropdown-item">
                                     <i class="icon-key"></i>
-                                    <span class="ml-2">Logout </span>
+                                    <span class="ml-2">Se déconnecter</span>
                                 </a>
                             </div>
                         </li>
@@ -134,8 +134,8 @@
                         <div class="card-footer">
                             <p class="card-text d-inline">{{$article->dateheurecreation}}</p>
                             <br><br>
-                            <a href="{{url('redacteur-chef/article/put')}}/{{Str::slug($article->titre)}}-{{$article->id}}" class="btn btn-outline-primary">Modifier</a>
-                            <a href="javascript:void()" class="btn btn-primary float-right">Valider</a>
+                            <a href="{{url('/redacteur-chef/article/put')}}/{{Str::slug($article->titre)}}-{{$article->id}}" class="btn btn-outline-primary">Modifier</a>
+                            <a href="{{url('/redacteur-chef/article/validate')}}/{{$article->id}}" class="btn btn-primary float-right">Valider</a>
                         </div>
                     </div>
                 </div>

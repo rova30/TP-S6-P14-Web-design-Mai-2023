@@ -77,13 +77,13 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="" class="dropdown-item">
                                     <i class="icon-user"></i>
-                                    @if (session()->get('redacteur')!=null)
+                                    @if (session()->get('admin')!=null)
                                         <span class="ml-2">{{session()->get('admin')[0]->prenom}}</span>
                                     @endif
                                 </a>
-                                <a href="" class="dropdown-item">
+                                <a href="{{url('/logoutAdmin')}}" class="dropdown-item">
                                     <i class="icon-key"></i>
-                                    <span class="ml-2">Logout </span>
+                                    <span class="ml-2">Se déconnecter</span>
                                 </a>
                             </div>
                         </li>

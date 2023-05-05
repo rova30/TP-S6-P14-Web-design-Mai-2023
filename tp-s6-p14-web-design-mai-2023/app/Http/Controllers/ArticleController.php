@@ -72,6 +72,15 @@ class ArticleController extends Controller
         return Article::find($parts[count($parts)-1]);
     }
 
+    public function validateArticle($id){
+        $redacteurchef = session()->get('redacteurchef');
+        $article = Article::find($id);
+        $article->validepar = $redacteurchef[0]->id;
+        $article->dateheurevalidation = Date::now()->toDateTimeString();
+        $article->save();
+        return redirect()->route('redacteur-chef')->with('success', 'Le contenu a été validé avec succés.');
+    }
+
     public function updateArticle($id){
         $redacteurchef = session()->get('redacteurchef');
         $contenu = request('contenu');
@@ -89,7 +98,7 @@ class ArticleController extends Controller
         ]);
 
         $article->save();
-        return redirect()->back()->with('success', 'Le contenu a été modifié avec succés.');
+        return redirect()->back()->with('success', 'Le contenu a été validé et modifié avec succés.');
     }
 
     public function publishArticle($id){
@@ -98,7 +107,7 @@ class ArticleController extends Controller
         $article->publiepar = $admin[0]->id;
         $article->dateheurepublication = Date::now()->toDateTimeString();
         $article->save();
-        return redirect()->back()->with('success', 'Le contenu a été publié avec succés.');
+        return redirect()->route('administrateur')->with('success', 'Le contenu a été publié avec succés.');
     }
 
 }
