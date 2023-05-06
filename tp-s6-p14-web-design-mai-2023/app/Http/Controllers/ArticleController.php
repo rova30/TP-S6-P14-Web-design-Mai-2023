@@ -65,26 +65,12 @@ class ArticleController extends Controller
 
         if ($request->hasFile('image')) {
             // Récupération de l'image depuis la requête
-            $image = $request->file('image');
+            $path = $request->file('image')->store('public/images');
+            $filename = basename($path);
 
-            // Génération d'un nom unique pour l'image
-            $filename = uniqid() . '.' . $image->getClientOriginalExtension();
-            $uploadPath = public_path('uploads');
-
-            // Vérification si le dossier uploads existe, sinon il est créé
-            if (!is_dir($uploadPath)) {
-                mkdir($uploadPath, 0755, true);
-            }            // Enregistrement de l'image dans le dossier public/uploads
-            $image->move($uploadPath, $filename);
-
-            // Chemin complet de l'image
-            $imagePath = $uploadPath . '/' . $filename;
-
-            // Conversion de l'image en base64
-            $imageData = base64_encode(file_get_contents($imagePath));
-
-            // Suppression de l'image du dossier uploads
-            unlink($imagePath);
+            $file = storage_path('app/' . $path);
+            $contents = file_get_contents($file);
+            $base64 = base64_encode($contents);
 
             // Création de l'article
             $article = new Article;
@@ -92,7 +78,7 @@ class ArticleController extends Controller
             $article->titre = $titre;
             $article->resume = $resume;
             $article->contenu = $contenu;
-            $article->img = 'data:image/jpeg;base64,' . $imageData;
+            $article->img = 'data:image/jpeg;base64,' . $base64;
             // Enregistrement de l'article dans la base de données
             $article->save();
         } else if (!$request->hasFile('image')) {
