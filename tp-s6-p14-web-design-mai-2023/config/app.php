@@ -184,4 +184,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'gzip' => true,
+
 ];
