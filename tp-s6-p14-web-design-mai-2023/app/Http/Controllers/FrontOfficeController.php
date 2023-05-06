@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class FrontOfficeController extends Controller
 {
@@ -16,8 +17,17 @@ class FrontOfficeController extends Controller
     }
 
     public function getArticle($url){
-        $article = (new ArticleController())->getArticleById($url);
-        return view('articleViewFrontOffice', compact('article'));
+        $parts = explode("-", $url);
+        $id = $parts[count($parts) - 1];
+        $fiche = Cache::remember('fiche_' . $id, 60, function () use ($id){
+            $article = Article::find($id);
+            return view('articleViewFrontOffice', compact('article'));
+        });
+        $response = response()->view('articleViewFrontOffice', [
+            'article' => $fiche,
+        ]);
+        $response->header('Cache-control', 'max-age=3600, public');
+        return $response;
     }
 
     public function searchArticle(){

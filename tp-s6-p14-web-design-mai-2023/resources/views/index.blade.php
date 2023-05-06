@@ -50,7 +50,7 @@ Carbon::setLocale('fr');
 <!-- ===============================================-->
 <main class="main" id="top">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="{{url('/')}}"><img src="<?php echo asset('assets/front-office/img/Logo.png')?>" alt="boldo" /></a>
+        <div class="container"><a class="navbar-brand" href="{{url('/')}}"><img src="/assets/front-office/img/Logo.png" alt="boldo" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
