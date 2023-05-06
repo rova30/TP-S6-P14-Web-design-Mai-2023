@@ -20,8 +20,7 @@ class FrontOfficeController extends Controller
         $parts = explode("-", $url);
         $id = $parts[count($parts) - 1];
         $fiche = Cache::remember('fiche_' . $id, 60, function () use ($id){
-            $article = Article::find($id);
-            return view('articleViewFrontOffice', compact('article'));
+            return Article::find($id);
         });
         $response = response()->view('articleViewFrontOffice', [
             'article' => $fiche,
