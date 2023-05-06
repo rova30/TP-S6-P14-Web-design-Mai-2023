@@ -71,10 +71,10 @@ class ArticleController extends Controller
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
 
             // Enregistrement de l'image dans le dossier public/uploads
-            $image->move(public_path('uploads'), $filename);
+            $image->move(public_path('assets/uploads'), $filename);
 
             // Chemin complet de l'image
-            $imagePath = public_path('uploads/' . $filename);
+            $imagePath = public_path('assets/uploads/' . $filename);
 
             // Conversion de l'image en base64
             $imageData = base64_encode(file_get_contents($imagePath));
