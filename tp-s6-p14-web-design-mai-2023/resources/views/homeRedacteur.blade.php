@@ -228,7 +228,7 @@
 <!--**********************************
     Scripts
 ***********************************-->
-<script src="<?php echo asset('assets/back-office/js/ckeditor.js')?>"></script>
+<script src="/assets/back-office/js/ckeditor.js"></script>
 
 <script>
 
