@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Rédacteur | Back-Office</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
-    <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css')?>">
-    <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.theme.default.min.css')?>">
-    <link href="<?php echo asset('assets/back-office/vendor/jqvmap/css/jqvmap.min.css')?>" rel="stylesheet">
-    <link href="<?php echo asset('assets/back-office/css/style.css')?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/select2/css/select2.min.css')?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/back-office/images/favicon.png">
+    <link rel="stylesheet" href="/assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/back-office/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="/assets/back-office/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="/assets/back-office/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/back-office/vendor/select2/css/select2.min.css">
 
 
 </head>
@@ -255,39 +255,37 @@
 </script>
 
 
-<!-- Required vendors -->
-<script src="<?php echo asset('assets/back-office/vendor/global/global.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/quixnav-init.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/custom.min.js')?>"></script>
+<script src="/assets/back-office/vendor/global/global.min.js"></script>
+<script src="/assets/back-office/js/quixnav-init.js"></script>
+<script src="/assets/back-office/js/custom.min.js"></script>
 
 
 <!-- Vectormap -->
-<script src="<?php echo asset('assets/back-office/vendor/raphael/raphael.min.js')?>"></script>
-<script src="<?php echo asset('assets/vendor/morris/morris.min.js')?>"></script>
+<script src="/assets/back-office/vendor/raphael/raphael.min.js"></script>
+<script src="/assets/vendor/morris/morris.min.js"></script>
 
 
-<script src="<?php echo asset('assets/back-office/vendor/circle-progress/circle-progress.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/chart/Chart.bundle.min.js')?>"></script>
+<script src="/assets/back-office/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="/assets/back-office/vendor/chart/Chart.bundle.min.js"></script>
 
-<script src="<?php echo asset('assets/back-office/vendor/gaugeJS/dist/gauge.min.js')?>"></script>
+<script src="/assets/back-office/vendor/gaugeJS/dist/gauge.min.js"></script>
 
 <!--  flot-chart js -->
-<script src="<?php echo asset('assets/back-office/vendor/flot/jquery.flot.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/flot/jquery.flot.resize.js')?>"></script>
+<script src="/assets/back-office/vendor/flot/jquery.flot.js"></script>
+<script src="/assets/back-office/vendor/flot/jquery.flot.resize.js"></script>
 
 <!-- Owl Carousel -->
-<script src="<?php echo asset('assets/back-office/vendor/owl-carousel/js/owl.carousel.min.js')?>"></script>
+<script src="/assets/back-office/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
 <!-- Counter Up -->
-<script src="<?php echo asset('assets/back-office/vendor/jqvmap/js/jquery.vmap.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/jqvmap/js/jquery.vmap.usa.js')?>"></script>
-<script src="<?php echo asset('assets/vendor/jquery.counterup/jquery.counterup.min.js')?>"></script>
+<script src="/assets/back-office/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+<script src="/assets/back-office/vendor/jqvmap/js/jquery.vmap.usa.js')?>"></script>
+<script src="/assets/vendor/jquery.counterup/jquery.counterup.min.js')?>"></script>
 
 
-<script src="<?php echo asset('assets/back-office/js/dashboard/dashboard-1.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/select2/js/select2.full.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/plugins-init/select2-init.js')?>"></script>
-
+<script src="/assets/back-office/js/dashboard/dashboard-1.js')?>"></script>
+<script src="/assets/back-office/vendor/select2/js/select2.full.min.js')?>"></script>
+<script src="/assets/back-office/js/plugins-init/select2-init.js')?>"></script>
 
 </body>
 

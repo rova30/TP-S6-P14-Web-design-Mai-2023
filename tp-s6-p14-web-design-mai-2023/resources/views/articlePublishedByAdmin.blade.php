@@ -12,12 +12,12 @@ Carbon::setLocale('fr');
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Admin | Back-Office</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
-    <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css')?>">
-    <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.theme.default.min.css')?>">
-    <link href="<?php echo asset('assets/back-office/vendor/jqvmap/css/jqvmap.min.css')?>" rel="stylesheet">
-    <link href="<?php echo asset('assets/back-office/css/style.css')?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/select2/css/select2.min.css')?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/back-office/images/favicon.png">
+    <link rel="stylesheet" href="/assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/back-office/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="/assets/back-office/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="/assets/back-office/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/back-office/vendor/select2/css/select2.min.css">
 
 
 </head>
@@ -49,9 +49,9 @@ Carbon::setLocale('fr');
     ***********************************-->
     <div class="nav-header">
         <a href="" class="brand-logo">
-            <img class="logo-abbr" src="<?php echo asset('assets/back-office/images/logo.png')?>" alt="">
-            <img class="logo-compact" src="<?php echo asset('assets/back-office/images/logo-text.png')?>" alt="">
-            <img class="brand-title" src="<?php echo asset('assets/back-office/images/logo-text.png')?>" alt="">
+            <img class="logo-abbr" src="/assets/back-office/images/logo.png" alt="">
+            <img class="logo-compact" src="/assets/back-office/images/logo-text.png" alt="">
+            <img class="brand-title" src="/assets/back-office/images/logo-text.png" alt="">
         </a>
 
         <div class="nav-control">
@@ -135,8 +135,8 @@ Carbon::setLocale('fr');
                         <div class="input-group mb-3">
                             @if(isset($keyword))
                                 <input type="text" class="form-control" value="{{$keyword}}" placeholder="Tapez ce que vous voulez rechercher" name="keyword">
-                                @else
-                                    <input type="text" class="form-control" placeholder="Tapez ce que vous voulez rechercher" name="keyword">
+                            @else
+                                <input type="text" class="form-control" placeholder="Tapez ce que vous voulez rechercher" name="keyword">
                             @endif
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">Rechercher</button>
@@ -153,11 +153,11 @@ Carbon::setLocale('fr');
                 @if (session()->has('success'))
                     <div class="alert alert-success"><strong>Succés!</strong> {{ session()->get('success') }}</div>
                 @endif
-                    @if(count($articles) == 0)
-                        <div class="col-xl-12 col-xxl-6 col-lg-6 col-sm-6">
-                            <div class="alert alert-warning"><strong>Info! </strong>Aucun résultat.</div>
-                        </div>
-                    @endif
+                @if(count($articles) == 0)
+                    <div class="col-xl-12 col-xxl-6 col-lg-6 col-sm-6">
+                        <div class="alert alert-warning"><strong>Info! </strong>Aucun résultat.</div>
+                    </div>
+                @endif
 
                 @foreach($articles as $article)
                     <div class="col-xl-4 col-xxl-6 col-lg-6 col-sm-6">
@@ -224,37 +224,37 @@ Carbon::setLocale('fr');
 
 
 <!-- Required vendors -->
-<script src="<?php echo asset('assets/back-office/vendor/global/global.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/quixnav-init.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/custom.min.js')?>"></script>
+<script src="/assets/back-office/vendor/global/global.min.js"></script>
+<script src="/assets/back-office/js/quixnav-init.js"></script>
+<script src="/assets/back-office/js/custom.min.js"></script>
 
 
 <!-- Vectormap -->
-<script src="<?php echo asset('assets/back-office/vendor/raphael/raphael.min.js')?>"></script>
-<script src="<?php echo asset('assets/vendor/morris/morris.min.js')?>"></script>
+<script src="/assets/back-office/vendor/raphael/raphael.min.js"></script>
+<script src="/assets/vendor/morris/morris.min.js"></script>
 
 
-<script src="<?php echo asset('assets/back-office/vendor/circle-progress/circle-progress.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/chart/Chart.bundle.min.js')?>"></script>
+<script src="/assets/back-office/vendor/circle-progress/circle-progress.min.js"></script>
+<script src="/assets/back-office/vendor/chart/Chart.bundle.min.js"></script>
 
-<script src="<?php echo asset('assets/back-office/vendor/gaugeJS/dist/gauge.min.js')?>"></script>
+<script src="/assets/back-office/vendor/gaugeJS/dist/gauge.min.js"></script>
 
 <!--  flot-chart js -->
-<script src="<?php echo asset('assets/back-office/vendor/flot/jquery.flot.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/flot/jquery.flot.resize.js')?>"></script>
+<script src="/assets/back-office/vendor/flot/jquery.flot.js"></script>
+<script src="/assets/back-office/vendor/flot/jquery.flot.resize.js"></script>
 
 <!-- Owl Carousel -->
-<script src="<?php echo asset('assets/back-office/vendor/owl-carousel/js/owl.carousel.min.js')?>"></script>
+<script src="/assets/back-office/vendor/owl-carousel/js/owl.carousel.min.js"></script>
 
 <!-- Counter Up -->
-<script src="<?php echo asset('assets/back-office/vendor/jqvmap/js/jquery.vmap.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/jqvmap/js/jquery.vmap.usa.js')?>"></script>
-<script src="<?php echo asset('assets/vendor/jquery.counterup/jquery.counterup.min.js')?>"></script>
+<script src="/assets/back-office/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+<script src="/assets/back-office/vendor/jqvmap/js/jquery.vmap.usa.js')?>"></script>
+<script src="/assets/vendor/jquery.counterup/jquery.counterup.min.js')?>"></script>
 
 
-<script src="<?php echo asset('assets/back-office/js/dashboard/dashboard-1.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/vendor/select2/js/select2.full.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/plugins-init/select2-init.js')?>"></script>
+<script src="/assets/back-office/js/dashboard/dashboard-1.js')?>"></script>
+<script src="/assets/back-office/vendor/select2/js/select2.full.min.js')?>"></script>
+<script src="/assets/back-office/js/plugins-init/select2-init.js')?>"></script>
 
 
 </body>
