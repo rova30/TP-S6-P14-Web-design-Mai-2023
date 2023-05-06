@@ -16,8 +16,9 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     *
      */
-    public function boot(): void
+    public function boot()
     {
         //
         if(request()->server('HTTP_ACCEPT_ENCODING') && strpos(request()->server('HTTP_ACCEPT_ENCODING'),
