@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php
+use Carbon\Carbon;
+Carbon::setLocale('fr');
+?>
+
+    <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
 <head>
