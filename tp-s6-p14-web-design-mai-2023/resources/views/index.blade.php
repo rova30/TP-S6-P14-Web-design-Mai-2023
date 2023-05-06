@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/front-office/img/favicons/favicon-16x16.png">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/front-office/img/favicons/favicon.ico">
     <link rel="manifest" href="/assets/front-office/img/favicons/manifest.json'">
-    <meta name="msapplication-TileImage" content="assets/front-office/img/favicons/mstile-150x150.png">
+    <meta name="msapplication-TileImage" content="/assets/front-office/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
 
 
@@ -32,7 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link href="/assets/front-office/vendors/prism/prism.css" rel="stylesheet">
     <link href="/assets/front-office/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="/assets/front-office/css/theme.css" rel="stylesheet')?>" />
+    <link href="/assets/front-office/css/theme.css" rel="stylesheet" />
     <link href="/assets/front-office/css/user.css" rel="stylesheet" />
 
 </head>
