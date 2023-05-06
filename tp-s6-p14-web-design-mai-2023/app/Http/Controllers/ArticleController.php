@@ -69,8 +69,7 @@ class ArticleController extends Controller
 
             // Génération d'un nom unique pour l'image
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
-            // Chemin absolu du dossier uploads
-            $uploadPath = base_path('uploads');
+            $uploadPath = public_path('uploads');
 
             // Vérification si le dossier uploads existe, sinon il est créé
             if (!is_dir($uploadPath)) {
