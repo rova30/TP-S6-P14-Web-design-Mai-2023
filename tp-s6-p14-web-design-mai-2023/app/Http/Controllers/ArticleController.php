@@ -69,12 +69,17 @@ class ArticleController extends Controller
 
             // Génération d'un nom unique pour l'image
             $filename = uniqid() . '.' . $image->getClientOriginalExtension();
+            // Chemin absolu du dossier uploads
+            $uploadPath = base_path('uploads');
 
-            // Enregistrement de l'image dans le dossier public/uploads
-            $image->move(public_path('assets/uploads'), $filename);
+            // Vérification si le dossier uploads existe, sinon il est créé
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0755, true);
+            }            // Enregistrement de l'image dans le dossier public/uploads
+            $image->move($uploadPath, $filename);
 
             // Chemin complet de l'image
-            $imagePath = public_path('assets/uploads/' . $filename);
+            $imagePath = $uploadPath . '/' . $filename;
 
             // Conversion de l'image en base64
             $imageData = base64_encode(file_get_contents($imagePath));
