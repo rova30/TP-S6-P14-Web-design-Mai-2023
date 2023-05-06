@@ -117,7 +117,7 @@ Carbon::setLocale('fr');
 
     <div class="container">
         <div class="row justify-content-between">
-            <div class="col-lg-6 col-sm-12"><a href="{{url('/')}}"><img class="img-fluid mt-5 mb-4" src="<?php echo asset('assets/front-office/img/black-logo.png')?>" alt="" /></a>
+            <div class="col-lg-6 col-sm-12"><a href="{{url('/')}}"><img class="img-fluid mt-5 mb-4" src="<?php echo asset('assets/front-office/img/black-logo.png')?>" alt="boldo" /></a>
                 <p class="w-lg-75 text-gray">Un site-web dont vous y trouverez les dernières infos sur l'IA.</p>
             </div>
             <p class="text-gray">Tous droits réservées.</p>
