@@ -25,7 +25,7 @@ class FrontOfficeController extends Controller
         $response = response()->view('articleViewFrontOffice', [
             'article' => $fiche,
         ]);
-        $response->header('Cache-control', 'max-age=3600, public');
+        $response->header('Cache-Control', 'max-age=3600, public');
         return $response;
     }
 
