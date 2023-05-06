@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>TP-Web&Design | Back-Office</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
-    <link href="<?php echo asset('assets/back-office/css/style.css')?>" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/back-office/images/favicon.png">
+    <link href="/assets/back-office/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -54,9 +54,9 @@
     Scripts
 ***********************************-->
 <!-- Required vendors -->
-<script src="<?php echo asset('assets/back-office/vendor/global/global.min.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/quixnav-init.js')?>"></script>
-<script src="<?php echo asset('assets/back-office/js/custom.min.js')?>"></script>
+<script src="/assets/back-office/vendor/global/global.min.js"></script>
+<script src="/assets/back-office/js/quixnav-init.js"></script>
+<script src="/assets/back-office/js/custom.min.js"></script>
 
 </body>
 
