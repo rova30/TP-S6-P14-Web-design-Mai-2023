@@ -25,7 +25,8 @@ CREATE TABLE Articles(
     dateHeureValidation timestamp,
     publiePar int REFERENCES Utilisateurs(id),
     dateHeurePublication timestamp,
-    status int DEFAULT 0
+    status int DEFAULT 0,
+    img text
 );
 
 CREATE TABLE Historiques(
@@ -47,3 +48,14 @@ INSERT INTO Utilisateurs(profil_id, nom, prenom, email, mdp) VALUES
 (1, 'Rakotoarisoa', 'Pierrette', 'rakotoarisoa@gmail.com', 'rakotoarisoa1234'),
 (2, 'Rabemananjara', 'Jean-Jacques', 'rabemananjara@gmail.com', 'rabemananjara1234'),
 (3, 'Andrianivoson', 'Michel', 'andrianivoson@gmail.com', 'andrianivoson1234');
+
+
+SELECT * FROM v_article WHERE lower(titre) like '%a%' OR lower(contenu) like '%a%' OR lower(redacteur_nom) like '%a%' OR lower(redacteur_prenom) like '%a%';
+
+CREATE OR REPLACE VIEW v_article AS
+SELECT a.id, a.titre, a.resume, a.contenu, a.dateheurecreation, u1.nom AS redacteur_nom, u1.prenom AS redacteur_prenom, u2.nom AS valideur_nom, u2.prenom AS valideur_prenom, u3.nom AS publieur_nom, u3.prenom AS publieur_prenom, a.dateheurevalidation, a.dateheurepublication, a.status, a.img
+FROM articles a
+JOIN utilisateurs u1 ON a.redacteur_id = u1.id
+LEFT JOIN utilisateurs u2 ON a.validepar = u2.id
+LEFT JOIN utilisateurs u3 ON a.publiepar = u3.id;
+

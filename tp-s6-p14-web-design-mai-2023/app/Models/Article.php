@@ -22,10 +22,16 @@ class Article extends Model
         'dateheurevalidation',
         'publiepar',
         'dateheurepublication',
-        'status'
+        'status',
+        'img'
     ];
 
     public $timestamps = false;
+
+    public function redacteurUser()
+    {
+        return $this->belongsTo(Utilisateur::class, 'redacteur_id');
+    }
 
     public function getRedacteurUserAttribute()
     {

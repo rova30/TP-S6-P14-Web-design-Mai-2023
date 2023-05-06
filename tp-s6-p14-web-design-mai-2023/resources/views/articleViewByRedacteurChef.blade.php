@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{Str::slug($article->titre)}}-{{$article->id}}</title>
+    <title>Chef Rédacteur | Back-Office</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
     <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css')?>">

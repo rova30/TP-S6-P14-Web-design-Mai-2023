@@ -10,57 +10,90 @@ use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
-    public function findAllArticles(){
+    public function findAllArticles()
+    {
         return Article::all();
     }
 
-    public function findAllArticleNotYetValidate(){
+    public function findAllArticleNotYetValidate()
+    {
         return Article::where('validepar', '=', null)
-                        ->where('dateheurevalidation', '=', null)
-                        ->get();
+            ->where('dateheurevalidation', '=', null)
+            ->get();
     }
 
-    public function findAllArticleNotYetPublished(){
+    public function findAllArticleNotYetPublished()
+    {
         return Article::where('validepar', '!=', null)
             ->where('dateheurevalidation', '!=', null)
             ->where('dateheurepublication', '=', null)
             ->get();
     }
 
+    public function findAllArticlePublished()
+    {
+        return Article::where('validepar', '!=', null)
+            ->where('dateheurevalidation', '!=', null)
+            ->where('dateheurepublication', '!=', null)
+            ->get();
+    }
 
 
-
-    public function articleFormPage(){
+    public function articleFormPage()
+    {
         return view('articleFormPage');
     }
 
-    public function createArticle(){
+    public function createArticle(Request $request)
+    {
         $titre = request('titre');
         $resume = request('resume');
         $contenu = request('contenu');
         $utilisateur = session()->get('redacteur');
 
-        if($titre == null){
+        if ($titre == null) {
             return redirect()->back()->with('error', 'Veuillez ajouter un titre.');
         }
 
-        if($resume == null){
+        if ($resume == null) {
             return redirect()->back()->with('error', 'Veuillez ajouter un résumé.');
         }
 
-        if($contenu == null){
+        if ($contenu == null) {
             return redirect()->back()->with('error', 'Veuillez ajouter un contenu.');
         }
 
-        // Création de l'article
-        $article = new Article;
-        $article->redacteur_id = $utilisateur[0]->id;
-        $article->titre = $titre;
-        $article->resume = $resume;
-        $article->contenu = $contenu;
+        if ($request->hasFile('image')) {
+            // Récupération de l'image depuis la requête
+            $image = $request->file('image');
 
-        // Enregistrement de l'article dans la base de données
-        $article->save();
+            // Génération d'un nom unique pour l'image
+            $filename = uniqid() . '.' . $image->getClientOriginalExtension();
+
+            // Enregistrement de l'image dans le dossier public/uploads
+            $image->move(public_path('uploads'), $filename);
+
+            // Chemin complet de l'image
+            $imagePath = public_path('uploads/' . $filename);
+
+            // Conversion de l'image en base64
+            $imageData = base64_encode(file_get_contents($imagePath));
+
+            // Suppression de l'image du dossier uploads
+            unlink($imagePath);
+
+            // Création de l'article
+            $article = new Article;
+            $article->redacteur_id = $utilisateur[0]->id;
+            $article->titre = $titre;
+            $article->resume = $resume;
+            $article->contenu = $contenu;
+            $article->img = 'data:image/jpeg;base64,' . $imageData;
+            // Enregistrement de l'article dans la base de données
+            $article->save();
+        } else if (!$request->hasFile('image')) {
+            return redirect()->back()->with('error', 'Veuillez ajouter une image.');
+        }
 
         return redirect()->back()->with('success', 'Nouvel article crée.');
 
@@ -69,10 +102,11 @@ class ArticleController extends Controller
     public function getArticleById($url)
     {
         $parts = explode("-", $url);
-        return Article::find($parts[count($parts)-1]);
+        return Article::find($parts[count($parts) - 1]);
     }
 
-    public function validateArticle($id){
+    public function validateArticle($id)
+    {
         $redacteurchef = session()->get('redacteurchef');
         $article = Article::find($id);
         $article->validepar = $redacteurchef[0]->id;
@@ -81,7 +115,8 @@ class ArticleController extends Controller
         return redirect()->route('redacteur-chef')->with('success', 'Le contenu a été validé avec succés.');
     }
 
-    public function updateArticle($id){
+    public function updateArticle($id)
+    {
         $redacteurchef = session()->get('redacteurchef');
         $contenu = request('contenu');
         $article = Article::find($id);
@@ -101,7 +136,8 @@ class ArticleController extends Controller
         return redirect()->back()->with('success', 'Le contenu a été validé et modifié avec succés.');
     }
 
-    public function publishArticle($id){
+    public function publishArticle($id)
+    {
         $admin = session()->get('admin');
         $article = Article::find($id);
         $article->publiepar = $admin[0]->id;
@@ -110,4 +146,33 @@ class ArticleController extends Controller
         return redirect()->route('administrateur')->with('success', 'Le contenu a été publié avec succés.');
     }
 
+    public function unpublishArticle($id)
+    {
+        $article = Article::find($id);
+        $article->validepar = null;
+        $article->dateheurevalidation = null;
+        $article->publiepar = null;
+        $article->dateheurepublication = null;
+        $article->save();
+        return redirect()->route('articles.published')->with('success', 'Le contenu n\'est plus publié.');
+    }
+
+
+    public function searchArticle($keyword)
+    {
+        $query = Article::query();
+
+        if (!empty($keyword)) {
+            $query->where(function ($q) use ($keyword) {
+                $q->whereRaw('lower(titre) like ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereRaw('lower(resume) like ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereRaw('lower(contenu) like ?', ['%' . strtolower($keyword) . '%'])
+                    ->orWhereHas('redacteurUser', function ($q) use ($keyword) {
+                        $q->whereRaw('lower(nom) like ?', ['%' . strtolower($keyword) . '%'])
+                            ->orWhereRaw('lower(prenom) like ?', ['%' . strtolower($keyword) . '%']);
+                    });
+            });
+        }
+        return $query->get();
+    }
 }

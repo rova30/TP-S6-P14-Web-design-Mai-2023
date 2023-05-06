@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>TP-Web&Design | Back-Office</title>
+    <title>Chef Rédacteur | Back-Office</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
     <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css')?>">
@@ -107,8 +107,6 @@
                             class="icon icon-app-store"></i><span class="nav-text">Article</span></a>
                     <ul aria-expanded="false">
                         <li><a href="">En attente de validation</a></li>
-                        <li><a href="">Ajouter</a></li>
-                        <li><a href="">Liste</a></li>
                     </ul>
                 </li>
             </ul>
@@ -132,9 +130,15 @@
                 @if (session()->has('success'))
                     <div class="alert alert-success"><strong>Succés!</strong> {{ session()->get('success') }}</div>
                 @endif
+
+            @if(count($articles) == 0)
+                <div class="col-xl-12 col-xxl-6 col-lg-6 col-sm-6">
+                    <div class="alert alert-warning"><strong>Info!</strong> Il n'y a pas encore d'article à valider.</div>
+                </div>
+            @endif
             @foreach($articles as $article)
                 <div class="col-xl-4 col-xxl-6 col-lg-6 col-sm-6">
-                    <a href="{{url('redacteur-chef/article')}}/{{Str::slug($article->titre)}}-{{$article->id}}">
+                    <a href="{{url('redacteur-chef/article')}}/{{$article->id}}">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title">{{$article->titre}}</h5>

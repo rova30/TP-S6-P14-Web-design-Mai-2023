@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>TP-Web&Design | Back-Office</title>
+    <title>Rédacteur | Back-Office</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
     <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css')?>">
@@ -107,7 +107,6 @@
                             class="icon icon-app-store"></i><span class="nav-text">Article</span></a>
                     <ul aria-expanded="false">
                         <li><a href="">Ajouter</a></li>
-                        <li><a href="">Liste</a></li>
                     </ul>
                 </li>
             </ul>
@@ -132,7 +131,7 @@
                         </div>
                         <div class="card-body">
                             <div class="basic-form">
-                                <form action="{{url('/article')}}" method="post">
+                                <form action="{{url('/article')}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <h4 class="card-title--small">Titre</h4>
                                     <div class="form-row">
@@ -156,7 +155,25 @@
                                         ></textarea>
                                         </div>
                                     </div>
-
+                                    <h4 class="card-title--small">Image</h4>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">Choisir</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="inputImage" accept="image/*" name="image">
+                                                    <label class="custom-file-label">Fichier</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <img id="imagePreview" src="" alt="" width="500px">
+                                        </div>
+                                    </div>
                                     <br>
                                     <input type="submit" class="btn btn-primary" value="Enregistrer">
                                 </form>
@@ -221,6 +238,22 @@
             console.error( error );
         });
 </script>
+<script type="text/javascript">
+    const inputImage = document.getElementById("inputImage");
+    const imagePreview = document.getElementById("imagePreview");
+
+    inputImage.addEventListener("change", () => {
+        const file = inputImage.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+            imagePreview.src = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+    });
+</script>
+
 
 <!-- Required vendors -->
 <script src="<?php echo asset('assets/back-office/vendor/global/global.min.js')?>"></script>

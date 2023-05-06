@@ -1,11 +1,16 @@
-<!DOCTYPE html>
+<?php
+use Carbon\Carbon;
+Carbon::setLocale('fr');
+?>
+
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Chef Rédacteur | Back-Office</title>
+    <title>Admin | Back-Office</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo asset('assets/back-office/images/favicon.png')?>">
     <link rel="stylesheet" href="<?php echo asset('assets/back-office/vendor/owl-carousel/css/owl.carousel.min.css')?>">
@@ -77,13 +82,13 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a href="" class="dropdown-item">
                                     <i class="icon-user"></i>
-                                    @if (session()->get('redacteur')!=null)
-                                        <span class="ml-2">{{session()->get('redacteurchef')[0]->prenom}}</span>
+                                    @if (session()->get('admin')!=null)
+                                        <span class="ml-2">{{session()->get('admin')[0]->prenom}}</span>
                                     @endif
                                 </a>
-                                <a href="" class="dropdown-item">
+                                <a href="{{url('/logoutAdmin')}}" class="dropdown-item">
                                     <i class="icon-key"></i>
-                                    <span class="ml-2">Logout </span>
+                                    <span class="ml-2">Se déconnecter</span>
                                 </a>
                             </div>
                         </li>
@@ -106,9 +111,8 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-app-store"></i><span class="nav-text">Article</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="">En attente de validation</a></li>
-                        <li><a href="">Ajouter</a></li>
-                        <li><a href="">Liste</a></li>
+                        <li><a href="{{url('/administrateur')}}">En attente de publication</a></li>
+                        <li><a href="{{url('/administrateur/articles/published')}}">Articles publiés</a></li>
                     </ul>
                 </li>
             </ul>
@@ -125,44 +129,60 @@
     <div class="content-body">
         <!-- row -->
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-12 col-xxl-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Modifier un article</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="basic-form">
-                                <form action="{{ route('article.update', $article->id) }}" method="post">
-                                    {{csrf_field()}}
-                                    @method('PUT')
-                                    <h4 class="card-title--small">Contenu</h4>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-12">
-                                        <textarea
-                                            id="contenu"
-                                            class="form-control"
-                                            name="contenu"
-                                        >{!! $article->contenu !!}</textarea>
-                                        </div>
-                                    </div>
-
-                                    <br>
-                                    <input type="submit" class="btn btn-primary" value="Enregistrer">
-                                </form>
-                                <br>
-                                @if (session()->has('error'))
-                                    <div class="alert alert-danger"><strong>Erreur!</strong> {{ session()->get('error') }}</div>
-                                @endif
-                                @if (session()->has('success'))
-                                    <div class="alert alert-success"><strong>Succés!</strong> {{ session()->get('success') }}</div>
-                                @endif
-
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <form action="{{url('/administrateur/search')}}" method="get">
+                        <div class="input-group mb-3">
+                            @if(isset($keyword))
+                                <input type="text" class="form-control" value="{{$keyword}}" placeholder="Tapez ce que vous voulez rechercher" name="keyword">
+                                @else
+                                    <input type="text" class="form-control" placeholder="Tapez ce que vous voulez rechercher" name="keyword">
+                            @endif
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Rechercher</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
+
+            <div class="row">
+                @if (session()->has('error'))
+                    <div class="alert alert-danger"><strong>Erreur!</strong> {{ session()->get('error') }}</div>
+                @endif
+                @if (session()->has('success'))
+                    <div class="alert alert-success"><strong>Succés!</strong> {{ session()->get('success') }}</div>
+                @endif
+                    @if(count($articles) == 0)
+                        <div class="col-xl-12 col-xxl-6 col-lg-6 col-sm-6">
+                            <div class="alert alert-warning"><strong>Info! </strong>Aucun résultat.</div>
+                        </div>
+                    @endif
+
+                @foreach($articles as $article)
+                    <div class="col-xl-4 col-xxl-6 col-lg-6 col-sm-6">
+                        <a href="{{url('administrateur/articles/published')}}/{{$article->id}}">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">{{$article->titre}}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">{{$article->resume}}
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="card-text d-inline">{{Carbon::parse($article->dateheurepublication)->isoFormat('dddd DD MMMM YYYY, HH:mm')}}</p>
+                                    <p class="card-text">{{$article->getRedacteurUserAttribute()->nom}}&nbsp;{{$article->getRedacteurUserAttribute()->prenom}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            <div class="pagination-container">
+                {{ $articles->links('vendor.pagination.default') }}
+            </div>
+
         </div>
     </div>
 
@@ -202,16 +222,6 @@
     Scripts
 ***********************************-->
 
-<script src="<?php echo asset('assets/back-office/js/ckeditor.js')?>"></script>
-
-<script>
-
-    ClassicEditor
-        .create(document.querySelector('#contenu'))
-        .catch( error => {
-            console.error( error );
-        });
-</script>
 
 <!-- Required vendors -->
 <script src="<?php echo asset('assets/back-office/vendor/global/global.min.js')?>"></script>
