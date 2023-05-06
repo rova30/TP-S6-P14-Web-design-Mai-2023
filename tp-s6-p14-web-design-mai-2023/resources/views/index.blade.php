@@ -16,11 +16,11 @@
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/front-office/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/front-office/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/front-office/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/front-office/img/favicons/favicon.ico">
-    <link rel="manifest" href="assets/front-office/img/favicons/manifest.json'">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/front-office/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/front-office/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/front-office/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/front-office/img/favicons/favicon.ico">
+    <link rel="manifest" href="/assets/front-office/img/favicons/manifest.json'">
     <meta name="msapplication-TileImage" content="assets/front-office/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
 
@@ -30,10 +30,10 @@
     <!-- ===============================================-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link href="assets/front-office/vendors/prism/prism.css" rel="stylesheet">
-    <link href="assets/front-office/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/front-office/css/theme.css" rel="stylesheet')?>" />
-    <link href="assets/front-office/css/user.css" rel="stylesheet" />
+    <link href="/assets/front-office/vendors/prism/prism.css" rel="stylesheet">
+    <link href="/assets/front-office/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/assets/front-office/css/theme.css" rel="stylesheet')?>" />
+    <link href="/assets/front-office/css/user.css" rel="stylesheet" />
 
 </head>
 
@@ -135,16 +135,16 @@
 <!-- ===============================================-->
 <!--    JavaScripts-->
 <!-- ===============================================-->
-<script src="assets/front-office/vendors/popper/popper.min.js"></script>
-<script src="assets/front-office/vendors/bootstrap/bootstrap.min.js"></script>
-<script src="assets/front-office/vendors/anchorjs/anchor.min.js"></script>
-<script src="assets/front-office/vendors/is/is.min.js"></script>
-<script src="assets/front-office/vendors/fontawesome/all.min.js"></script>
-<script src="assets/front-office/vendors/lodash/lodash.min.js"></script>
+<script src="/assets/front-office/vendors/popper/popper.min.js"></script>
+<script src="/assets/front-office/vendors/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/front-office/vendors/anchorjs/anchor.min.js"></script>
+<script src="/assets/front-office/vendors/is/is.min.js"></script>
+<script src="/assets/front-office/vendors/fontawesome/all.min.js"></script>
+<script src="/assets/front-office/vendors/lodash/lodash.min.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-<script src="assets/front-office/vendors/prism/prism.js"></script>
-<script src="assets/front-office/vendors/swiper/swiper-bundle.min.js"></script>
-<script src="assets/front-office/js/theme.js"></script>
+<script src="/assets/front-office/vendors/prism/prism.js"></script>
+<script src="/assets/front-office/vendors/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/front-office/js/theme.js"></script>
 
 </body>
 
