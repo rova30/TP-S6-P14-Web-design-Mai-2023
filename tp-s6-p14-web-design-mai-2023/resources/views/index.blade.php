@@ -90,7 +90,7 @@ Carbon::setLocale('fr');
                         <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
                             <a href="{{url('/article')}}/{{Str::slug($article->titre)}}-{{$article->id}}">
                             <div class="d-flex flex-column justify-content-between h-100">
-                                <h4 class="text-black">{{$article->titre}}</h4>
+                                <h1 class="text-black">{{$article->titre}}</h1>
                                 <div class="d-flex align-items-center gap-3 mt-5">
                                     <div class="text-black">
                                         <p class="mb-0 fw-bold text-dark">{{$article->getRedacteurUserAttribute()->nom}}&nbsp;{{$article->getRedacteurUserAttribute()->prenom}}</p><small>{{Carbon::parse($article->dateheurepublication)->isoFormat('dddd DD MMMM YYYY, HH:mm')}}</small>
