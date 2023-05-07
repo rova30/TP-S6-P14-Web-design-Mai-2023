@@ -21,6 +21,7 @@ class GzipMiddleware
             $response->setContent($content);
             $response->header('Content-Encoding', 'gzip');
             $response->header('Vary', 'Accept-Encoding');
+            $response->header('Content-Type', 'text/html; charset=UTF-8');
         }
 
         return $response;
