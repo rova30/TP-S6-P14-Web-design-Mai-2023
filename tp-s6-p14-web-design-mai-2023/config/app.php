@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://tp-s6-p14-web-design-mai-2023-by-rova1667.up.railway.app/'),
 
     'asset_url' => env('ASSET_URL'),
 
