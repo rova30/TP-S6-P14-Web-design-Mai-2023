@@ -37,7 +37,6 @@ Carbon::setLocale('fr');
     <link href="/assets/front-office/vendors/prism/prism.css" rel="stylesheet">
     <link href="/assets/front-office/vendors/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="/assets/front-office/css/theme.css" rel="stylesheet" />
-    <link href="/assets/front-office/css/user.css" rel="stylesheet" />
 
 </head>
 
