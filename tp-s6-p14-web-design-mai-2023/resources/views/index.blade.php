@@ -90,9 +90,7 @@ Carbon::setLocale('fr');
                         <div class="swiper-slide bg-white p-5 rounded-3 h-auto">
                             <a href="{{url('/article')}}/{{Str::slug($article->titre)}}-{{$article->id}}">
                             <div class="d-flex flex-column justify-content-between h-100">
-                                <h1></h1>
-                                <h2></h2>
-                                <h3></h3>
+                                <h1></h1><h2></h2><h3></h3>
                                 <h4 class="text-black">{{$article->titre}}</h4>
                                 <div class="d-flex align-items-center gap-3 mt-5">
                                     <div class="text-black">
