@@ -17,11 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Front-Office
-Route::middleware(['gzip'])->group(function(){
-    Route::get('/', [FrontOfficeController::class, 'index']);
-    Route::get('/article/{url}', [FrontOfficeController::class, 'getArticle']);
-    Route::get('/search', [FrontOfficeController::class, 'searchArticle']);
-});
+Route::get('/', [FrontOfficeController::class, 'index']);
+Route::get('/article/{url}', [FrontOfficeController::class, 'getArticle']);
+Route::get('/search', [FrontOfficeController::class, 'searchArticle']);
+
 
 // Back-Office
 Route::get('/login', [UtilisateurController::class, 'loginPage'])->name('login');
