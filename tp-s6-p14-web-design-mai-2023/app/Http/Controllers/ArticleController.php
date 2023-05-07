@@ -32,11 +32,12 @@ class ArticleController extends Controller
 
     public function findAllArticlePublished()
     {
-        return Article::where('validepar', '!=', null)
-            ->where('dateheurevalidation', '!=', null)
-            ->where('dateheurepublication', '!=', null)
+        return Article::where('dateheurepublication', '!=', null)
+            ->where('publiepar', '!=', null)
+            ->orderBy('dateheurepublication', 'desc')
             ->get();
     }
+
 
 
     public function articleFormPage()

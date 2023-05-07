@@ -9,11 +9,14 @@ use Illuminate\Support\Facades\Cache;
 class FrontOfficeController extends Controller
 {
     public function index(){
-        $articles = Article::where('dateheurepublication', '!=', null)
-                            ->where('publiepar', '!=', null)
-                            ->orderBy('dateheurepublication', 'desc')
-                            ->get();
-        return view('index', compact('articles'));
+        $articles = Cache::remember('articles', 300, function (){
+            return (new ArticleController())->findAllArticlePublished();
+        });
+        $response = response()->view('index', [
+            'articles' => $articles,
+        ]);
+        $response->header('Cache-Control', 'max-age=3600, public');
+        return $response;
     }
 
     public function getArticle($url){
@@ -21,7 +24,7 @@ class FrontOfficeController extends Controller
         $id = $parts[count($parts) - 1];
         $fiche = Cache::remember('fiche_' . $id, 60, function () use ($id){
             return Article::find($id);
-        });
+    });
         $response = response()->view('articleViewFrontOffice', [
             'article' => $fiche,
         ]);
