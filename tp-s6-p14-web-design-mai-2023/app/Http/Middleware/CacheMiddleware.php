@@ -16,7 +16,7 @@ class CacheMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
-        if(in_array($response->getStatusCode(), [200, 203, 206]) && $request->is('assets/*')){
+        if(in_array($response->getStatusCode(), [200, 203, 206, 304]) && $request->is('assets/*')){
             $response->header('Cache-Control', 'public, max-age=31536000');
         }
         return $response;
