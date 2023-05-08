@@ -26,11 +26,11 @@
                                     {{csrf_field()}}
                                     <div class="form-group">
                                         <label for="email"><strong>Email</strong></label>
-                                        <input type="email" id="email" class="form-control" name="email">
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Entrez votre email">
                                     </div>
                                     <div class="form-group">
                                         <label for="password"><strong>Mot de passe</strong></label>
-                                        <input type="password" id="password" class="form-control" name="mdp">
+                                        <input type="password" id="password" class="form-control" name="mdp" placeholder="********">
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
