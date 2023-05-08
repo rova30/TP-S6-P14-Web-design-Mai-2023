@@ -47,7 +47,7 @@ Carbon::setLocale('fr');
 <!-- ===============================================-->
 <main class="main" id="top">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" data-navbar-on-scroll="data-navbar-on-scroll">
-        <div class="container"><a class="navbar-brand" href="{{url('/')}}"><img src="/assets/front-office/img/Logo.png" alt="{{$article->titre}}"  width="100px" height="100px"/></a>
+        <div class="container"><a class="navbar-brand" href="{{url('/')}}"><img src="/assets/front-office/img/Logo.png" alt="{{$article->titre}}" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars text-white fs-3"></i></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
@@ -115,7 +115,7 @@ Carbon::setLocale('fr');
 
     <div class="container">
         <div class="row justify-content-between">
-            <div class="col-lg-6 col-sm-12"><a href="{{url('/')}}"><img class="img-fluid mt-5 mb-4" src="/assets/front-office/img/black-logo.png" alt="boldo" width="100px" height="100px"/></a>
+            <div class="col-lg-6 col-sm-12"><a href="{{url('/')}}"><img class="img-fluid mt-5 mb-4" src="/assets/front-office/img/black-logo.png" alt="boldo" /></a>
                 <p class="w-lg-75 text-gray">Un site-web dont vous y trouverez les dernières infos sur l'IA.</p>
             </div>
             <p class="text-gray">Tous droits réservées.</p>
