@@ -3,11 +3,27 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresByType image/jpg "access plus 30 days"
+        ExpiresByType image/jpeg "access plus 30 days"
+        ExpiresByType image/gif "access plus 30 days"
+        ExpiresByType image/png "access plus 30 days"
+        ExpiresByType text/css "access plus 30 days"
+        ExpiresByType text/html "access plus 30 days"
+        ExpiresByType application/pdf "access plus 30 days"
+        ExpiresByType text/x-javascript "access plus 30 days"
+        ExpiresByType application/x-shockwave-flash "access plus 30 days"
+        ExpiresByType image/x-icon "access plus 30 days"
+        ExpiresDefault "access plus 30 days"
+    </IfModule>
+
     <IfModule mod_headers.c>
     <FilesMatch "\.(css|js|svg|png|jpg|jpeg|gif|ico)$">
      Header set Cache-Control "max-age=304800, public"
     </FilesMatch>
     </IfModule>
+
 
     RewriteEngine On
 
