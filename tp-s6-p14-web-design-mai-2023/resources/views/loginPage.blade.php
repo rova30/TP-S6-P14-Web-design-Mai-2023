@@ -40,6 +40,10 @@
                                 @if (session()->has('error'))
                                     <div class="alert alert-danger"><strong>Erreur!</strong> {{ session()->get('error') }}</div>
                                 @endif
+                                <div class="alert alert-outline-info"><strong>Rédacteur ! </strong>Email: <strong>rakotoarisoa@gmail.com</strong>, Pass:<strong> rakotoarisoa1234</strong></div>
+                                <div class="alert alert-outline-info"><strong>Rédacteur En Chef ! </strong>Email: <strong>rabemananjara@gmail.com</strong>, Pass:<strong> rabemananjara1234</strong></div>
+                                <div class="alert alert-outline-info"><strong>Administrateur ! </strong>Email: <strong>andrianivoson@gmail.com</strong>, Pass:<strong> andrianivoson1234</strong></div>
+
                             </div>
                         </div>
                     </div>
