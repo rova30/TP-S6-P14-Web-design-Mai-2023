@@ -106,9 +106,7 @@
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-app-store"></i><span class="nav-text">Article</span></a>
                     <ul aria-expanded="false">
-                        <li><a href="">En attente de validation</a></li>
-                        <li><a href="">Ajouter</a></li>
-                        <li><a href="">Liste</a></li>
+                        <li><a href="{{url('/redacteur-chef')}}">En attente de validation</a></li>
                     </ul>
                 </li>
             </ul>
