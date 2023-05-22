@@ -132,7 +132,7 @@
                         <div class="card-footer">
                             <p class="card-text d-inline">{{$article->dateheurecreation}}</p>
                             <br><br>
-                            <a href="{{url('/redacteur-chef/article/put')}}/{{Str::slug($article->titre)}}-{{$article->id}}" class="btn btn-outline-primary">Modifier</a>
+                            <a href="{{url('/redacteur-chef/article/put')}}/{{$article->id}}" class="btn btn-outline-primary">Modifier</a>
                             <a href="{{url('/redacteur-chef/article/validate')}}/{{$article->id}}" class="btn btn-primary float-right">Valider</a>
                         </div>
                     </div>
